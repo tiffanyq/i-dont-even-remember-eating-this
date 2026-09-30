@@ -29,7 +29,6 @@ const thoughtSound = new Audio("sound/thought.mp3");
 const selectionSound = new Audio("sound/selection.mp3");
 const backgroundSound = new Audio("sound/background_sound.mp3");
 backgroundSound.loop = true;
-backgroundSound.volume = 0.3;
 
 const audioCtx = new AudioContext();
 
@@ -42,6 +41,9 @@ function boost(audio, amount) {
 
 boost(peelSound, 2);
 boost(stickSound, 5);
+boost(thoughtSound, 1.5);
+boost(selectionSound, 1.5);
+boost(backgroundSound, 0.3);
 
 async function setup() {
   showTimeOfDay();
