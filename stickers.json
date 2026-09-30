@@ -1,0 +1,167 @@
+[
+  {
+    "name": "Vine-ripe tomato",
+    "image": "3151_vine-ripe-tomato.png",
+    "hex": "#D7301F"
+  },
+  {
+    "name": "Honeycrisp apple",
+    "image": "3283_honeycrisp-apple_1.png",
+    "hex": "#D2443A"
+  },
+  {
+    "name": "Sweet red onion",
+    "image": "3286_sweet-red-onion_1.png",
+    "hex": "#7B2D5B"
+  },
+  {
+    "name": "Honeycrisp apple",
+    "image": "3468_honeycrisp-apple.png",
+    "hex": "#D2443A"
+  },
+  {
+    "name": "Envy apple",
+    "image": "3616_envy-apple.png",
+    "hex": "#B5172B"
+  },
+  {
+    "name": "Banana",
+    "image": "4011_banana_1.png",
+    "hex": "#F4D94A"
+  },
+  {
+    "name": "Navel orange",
+    "image": "4012_navel-orange.png",
+    "hex": "#F58220"
+  },
+  {
+    "name": "Granny Smith apple",
+    "image": "4017_granny-smith-apple.png",
+    "hex": "#8DC63F"
+  },
+  {
+    "name": "Kiwi",
+    "image": "4030_kiwi_1.png",
+    "hex": "#8FA83A"
+  },
+  {
+    "name": "Black plum",
+    "image": "4040_black-plum.png",
+    "hex": "#3B1E3F"
+  },
+  {
+    "name": "Yellow peach",
+    "image": "4044_yellow-peach_1.png",
+    "hex": "#F9A94B"
+  },
+  {
+    "name": "Hass avocado",
+    "image": "4046_hass-avocado_1.png",
+    "hex": "#3E4A2A"
+  },
+  {
+    "name": "Tommy Atkins mango",
+    "image": "4051_hannah-tommy-mango.png",
+    "hex": "#E0533A"
+  },
+  {
+    "name": "Lemon",
+    "image": "4053_lemon_1.png",
+    "hex": "#F7E03C"
+  },
+  {
+    "name": "Mandarin",
+    "image": "4055_mandarin_1.png",
+    "hex": "#F68A1E"
+  },
+  {
+    "name": "Green bell pepper",
+    "image": "4065_green-bell-pepper.png",
+    "hex": "#3F8E2E"
+  },
+  {
+    "name": "Yellow onion",
+    "image": "4093_yellow-onion_1.png",
+    "hex": "#C9913E"
+  },
+  {
+    "name": "Fuji apple",
+    "image": "4129_fuji-apple.png",
+    "hex": "#D9534F"
+  },
+  {
+    "name": "Gala apple",
+    "image": "4133_gala-apple.png",
+    "hex": "#E0703A"
+  },
+  {
+    "name": "Apricot",
+    "image": "4218_apricot.png",
+    "hex": "#F4A25B"
+  },
+  {
+    "name": "White peach",
+    "image": "4401_white-peach.png",
+    "hex": "#F6D2C0"
+  },
+  {
+    "name": "Asian pear",
+    "image": "4408_asian-pear.png",
+    "hex": "#D6B46A"
+  },
+  {
+    "name": "Bartlett pear",
+    "image": "4409_bartlett-pear_1.png",
+    "hex": "#D8D25A"
+  },
+  {
+    "name": "D'Anjou pear",
+    "image": "4416_danjou-pear.png",
+    "hex": "#9CB54A"
+  },
+  {
+    "name": "Mandarin",
+    "image": "4450_mandarin_1.png",
+    "hex": "#F68A1E"
+  },
+  {
+    "name": "Keitt mango",
+    "image": "4584_keitt-mango.png",
+    "hex": "#7FA83B"
+  },
+  {
+    "name": "Kabocha squash",
+    "image": "4769_kabocha-squash.png",
+    "hex": "#3E5C3A"
+  },
+  {
+    "name": "Organic Honeycrisp apple",
+    "image": "93283_organic-honeycrisp-apple_1.png",
+    "hex": "#D2443A"
+  },
+  {
+    "name": "Organic Granny Smith apple",
+    "image": "94017_organic-granny-smith-apple_1.png",
+    "hex": "#8DC63F"
+  },
+  {
+    "name": "Organic lemon",
+    "image": "94053_organic-lemon.png",
+    "hex": "#F7E03C"
+  },
+  {
+    "name": "Organic zucchini",
+    "image": "94067_organic-zucchini.png",
+    "hex": "#3C6E2F"
+  },
+  {
+    "name": "Organic Pink Lady apple",
+    "image": "94128_organic-pink-lady-apple.png",
+    "hex": "#E86A7A"
+  },
+  {
+    "name": "Organic kabocha squash",
+    "image": "94769_organic-kabocha-squash.png",
+    "hex": "#3E5C3A"
+  }
+]

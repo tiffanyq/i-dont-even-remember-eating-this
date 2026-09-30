@@ -1,0 +1,128 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #282828;
+  font-size: 18px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background-image: url("background_slow.gif");
+  background-size: cover;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-weight: 700;
+}
+
+#marquee {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: red;
+  animation: colourchange 30s linear infinite;
+}
+
+#marquee-text {
+  display: inline-block;
+  animation: marquee 60s linear infinite;
+  color: white;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes colourchange {
+  0% {
+    background-color: red;
+  }
+  20% {
+    background-color: sandybrown;
+  }
+  40% {
+    background-color: cyan;
+  }
+  60% {
+    background-color: magenta;
+  }
+  80% {
+    background-color: slategray;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+#produce-to-peel-from {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+}
+
+#current-sticker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: #ffffff;
+  transition: background-color 0.4s ease;
+}
+
+#current-produce-name {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#current-sticker-img {
+  display: block;
+  max-width: 80px;
+  max-height: 80px;
+  cursor: grab;
+  position: relative;
+  z-index: 10;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+#current-sticker-img.dragging {
+  cursor: grabbing;
+}
+
+#current-sticker-img.snapping-back {
+  transition: transform 0.25s ease;
+}
+
+#notebook {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+#notebook canvas {
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  position: absolute;
+  bottom: 24px;
+  background-color: #ffffff;
+  padding: 2px 4px;
+  text-transform: uppercase;
+}
