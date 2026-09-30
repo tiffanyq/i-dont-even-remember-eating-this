@@ -11,6 +11,7 @@
     <script src="sketch.js"></script>
   </head>
   <body>
+    <div id="time-tint"></div>
     <div id="intro">
       <button id="start-button">
         <span>start sticking</span>
@@ -18,7 +19,7 @@
     </button>
     </div>
     <div id="marquee">
-      <div id="marquee-text">MORNING MORNING MORNING MORNING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AFTERNOON AFTERNOON AFTERNOON AFTERNOON &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EVENING EVENING EVENING EVENING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIGHT NIGHT NIGHT NIGHT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MORNING MORNING MORNING MORNING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AFTERNOON AFTERNOON AFTERNOON AFTERNOON &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EVENING EVENING EVENING EVENING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIGHT NIGHT NIGHT NIGHT</div>
+      <div id="marquee-text"><span class="marquee-copy"></span><span class="marquee-copy"></span></div>
     </div>
     <div id="sticker-play-area">
       <div id="produce-to-peel-from">
@@ -26,6 +27,13 @@
         <div id="current-sticker-container"><img src="" id="current-sticker-img" draggable="false"></div>
       </div>
       <main id="notebook"></main>
+      <div id="thought" class="hidden">
+        <div id="thought-text"></div>
+        <div id="thought-options">
+          <button id="thought-option-1" class="thought-option"></button>
+          <button id="thought-option-2" class="thought-option"></button>
+        </div>
+      </div>
     </div>
     <div id="sound-toggle" aria-label="sound" aria-pressed="true">🔈</div>
     <footer><a target="_blank" href="https://www.instagram.com/anotherbrowsertab/">@anotherbrowsertab</a></footer>

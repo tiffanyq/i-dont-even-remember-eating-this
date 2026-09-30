@@ -20,6 +20,24 @@ body {
   font-weight: 700;
 }
 
+#time-tint {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.3;
+  transition: background-color 2s ease;
+}
+
+body.dragging-sticker #marquee,
+body.dragging-sticker #marquee-text {
+  animation-play-state: paused;
+}
+
+body.dragging-sticker #marquee {
+  background-color: black !important;
+}
+
 #intro {
   position: fixed;
   inset: 0;
@@ -31,7 +49,8 @@ body {
   transition: opacity 0.4s ease;
 }
 
-#start-button {
+#start-button,
+.thought-option {
   font: inherit;
   font-size: 26px;
   text-transform: uppercase;
@@ -40,7 +59,9 @@ body {
   background: #282828;
   color: white;
   cursor: pointer;
-  outline: 2px solid red;
+  /* --time-colour set by showTimeOfDay() in sketch.js */
+  outline: 2px solid var(--time-colour, #ff8f4e);
+  transition: outline-color 0.4s ease;
 }
 
 #sound-info {
@@ -55,10 +76,55 @@ body {
 
 
 
-#start-button:hover {
+#start-button:hover,
+.thought-option:hover {
   color: #282828;
   background: white;
+  outline: 2px solid var(--time-colour, #ff8f4e);
+}
+
+#thought {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+#thought.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#thought-text {
+  max-width: 600px;
+  padding: 16px 24px;
+  background: white;
   outline: 2px solid #282828;
+  font-size: 26px;
+  text-transform: uppercase;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#thought-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.thought-option {
+  font-size: 18px;
+  padding: 12px 20px;
+  overflow-wrap: anywhere;
 }
 
 #start-button span {
@@ -73,8 +139,8 @@ body {
   line-height: 24px;
   overflow: hidden;
   white-space: nowrap;
-  background-color: red;
-  animation: colourchange 30s linear infinite;
+  background-color: #ff8f4e;
+  transition: background-color 0.4s ease;
 }
 
 #marquee-text {
@@ -136,6 +202,7 @@ body {
   text-align: center;
   text-transform: uppercase;
   transition: color 0.4s ease;
+  background: white;
 }
 
 #current-sticker-img {
