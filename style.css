@@ -20,6 +20,51 @@ body {
   font-weight: 700;
 }
 
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  transition: opacity 0.4s ease;
+}
+
+#start-button {
+  font: inherit;
+  font-size: 26px;
+  text-transform: uppercase;
+  padding: 20px 28px;
+  border: none;
+  background: #282828;
+  color: white;
+  cursor: pointer;
+  outline: 2px solid red;
+}
+
+#sound-info {
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+#intro.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+#start-button:hover {
+  color: #282828;
+  background: white;
+  outline: 2px solid #282828;
+}
+
+#start-button span {
+  display: block;
+}
+
 #marquee {
   position: absolute;
   top: 0;
@@ -64,6 +109,10 @@ body {
   }
 }
 
+#sticker-play-area {
+  margin-block: auto;
+}
+
 #produce-to-peel-from {
   display: flex;
   flex-direction: column;
@@ -80,12 +129,13 @@ body {
   width: 120px;
   height: 120px;
   background: #ffffff;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease-in-out;
 }
 
 #current-produce-name {
   text-align: center;
   text-transform: uppercase;
+  transition: color 0.4s ease;
 }
 
 #current-sticker-img {
@@ -97,6 +147,7 @@ body {
   z-index: 10;
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
 }
 
 #current-sticker-img.dragging {
@@ -104,7 +155,7 @@ body {
 }
 
 #current-sticker-img.snapping-back {
-  transition: transform 0.25s ease;
+  transition: transform 0.4s ease;
 }
 
 #notebook {
@@ -125,4 +176,19 @@ footer {
   background-color: #ffffff;
   padding: 2px 4px;
   text-transform: uppercase;
+}
+
+#sound-toggle {
+  position: fixed;
+  right: 16px;
+  top: 40px;
+  font: inherit;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 36px;
+  line-height: 42px;
+  vertical-align: middle;
 }

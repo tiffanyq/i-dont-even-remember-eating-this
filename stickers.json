@@ -27,7 +27,7 @@
   {
     "name": "Banana",
     "image": "4011_banana_1.png",
-    "hex": "#F4D94A"
+    "hex": "#E6CB32"
   },
   {
     "name": "Navel orange",
@@ -67,7 +67,7 @@
   {
     "name": "Lemon",
     "image": "4053_lemon_1.png",
-    "hex": "#F7E03C"
+    "hex": "#F0BC00"
   },
   {
     "name": "Mandarin",
@@ -102,7 +102,7 @@
   {
     "name": "White peach",
     "image": "4401_white-peach.png",
-    "hex": "#F6D2C0"
+    "hex": "#FF9C78"
   },
   {
     "name": "Asian pear",
@@ -112,7 +112,7 @@
   {
     "name": "Bartlett pear",
     "image": "4409_bartlett-pear_1.png",
-    "hex": "#D8D25A"
+    "hex": "#9FBF43"
   },
   {
     "name": "D'Anjou pear",
@@ -147,7 +147,7 @@
   {
     "name": "Organic lemon",
     "image": "94053_organic-lemon.png",
-    "hex": "#F7E03C"
+    "hex": "#EDBA00"
   },
   {
     "name": "Organic zucchini",

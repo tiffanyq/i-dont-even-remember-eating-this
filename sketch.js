@@ -5,9 +5,50 @@ let placedStickers = [];
 let cnv;
 let spawnerImg;
 let drag = null; // drag start
-const STICKER_SCALE_FACTOR = 0.18;
+const STICKER_SCALE_FACTOR = 0.45;
+let soundOn = true;
+
+// sounds
+const peelSound = new Audio("sound/peel.mp3");
+const stickSound = new Audio("sound/stick.mp3");
+const backgroundSound = new Audio("sound/background_sound.mp3");
+backgroundSound.loop = true;
+backgroundSound.volume = 0.5;
+
+// Web Audio lets us make sounds louder than their original volume
+const audioCtx = new AudioContext();
+
+function boost(audio, amount) {
+  const source = audioCtx.createMediaElementSource(audio);
+  const gain = audioCtx.createGain();
+  gain.gain.value = amount;
+  source.connect(gain).connect(audioCtx.destination);
+}
+
+boost(peelSound, 2);
+boost(stickSound, 5);
 
 async function setup() {
+
+  const intro = document.getElementById("intro");
+  document.getElementById("start-button").addEventListener("click", () => {
+    intro.classList.add("hidden");
+    audioCtx.resume();
+    startBackgroundSound();
+  });
+
+  const soundToggle = document.getElementById("sound-toggle");
+  soundToggle.addEventListener("click", () => {
+    soundOn = !soundOn;
+    soundToggle.innerText = soundOn ? "🔈" : "🔇";
+    soundToggle.setAttribute("aria-pressed", soundOn);
+    if (soundOn) {
+      startBackgroundSound();
+    } else {
+      backgroundSound.pause();
+    }
+  });
+
   // load images
   const d = await fetch("stickers.json");
   stickerData = await d.json();
@@ -18,7 +59,7 @@ async function setup() {
 
   // set up canvas aspect ratio
   const aspectRatio = notebookImg.height / notebookImg.width;
-  const w = min(windowWidth - 32, (windowHeight - 160) / aspectRatio, 1200); // 160 padding for sticker spawn
+  const w = constrain(min(windowWidth - 32, (windowHeight - 260) / aspectRatio), 700, 1200);
   cnv = createCanvas(w, w * aspectRatio);
   cnv.parent("notebook");
 
@@ -29,6 +70,7 @@ async function setup() {
   // init sticker dragging
     spawnerImg.addEventListener("pointerdown", (e) => {
     e.preventDefault();
+    playSound(peelSound);
     spawnerImg.setPointerCapture(e.pointerId);
     spawnerImg.classList.remove("snapping-back");
     spawnerImg.classList.add("dragging");
@@ -53,6 +95,12 @@ async function setup() {
 
 function draw() {
   image(notebookImg, 0, 0, width, height);
+
+  drawingContext.shadowColor = "rgba(0, 0, 0, 0.4)";
+  drawingContext.shadowBlur = 6;
+  drawingContext.shadowOffsetX = 1;
+  drawingContext.shadowOffsetY = 3;
+
   for (const p of placedStickers) {
     const img = p.sticker.imageFile;
     const w = img.width * STICKER_SCALE_FACTOR;
@@ -66,6 +114,7 @@ function spawnSticker() {
   spawnerImg.src = "stickers/" + currentSticker.image;
   document.getElementById("current-sticker-container").style.backgroundColor = currentSticker.hex;
   document.getElementById("current-produce-name").innerText= currentSticker.name;
+  document.getElementById("current-produce-name").style.color = currentSticker.hex;
 }
 
 function placeSticker(e) {
@@ -87,10 +136,23 @@ function placeSticker(e) {
       y: stickerBox.top + stickerBox.height/2 - canvasBox.top,
     });
     spawnerImg.style.transform = "";
+    playSound(stickSound);
     spawnSticker();
   } else {
     spawnerImg.classList.add("snapping-back");
     spawnerImg.style.transform = "";
   }
   redraw();
+}
+
+function playSound(sound) {
+  if (!soundOn) return;
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
+}
+
+function startBackgroundSound() {
+  if (!soundOn) return;
+  if (!backgroundSound.paused) return;
+  backgroundSound.play().catch(() => {});
 }

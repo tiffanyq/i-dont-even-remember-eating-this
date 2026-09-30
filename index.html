@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>remembering things</title>
+    <title>"Remembering" "things"</title>
     <meta name="description" content="what exactly am i remembering here">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍐</text></svg>">
     <link href="style.css" rel="stylesheet">
@@ -11,14 +11,23 @@
     <script src="sketch.js"></script>
   </head>
   <body>
+    <div id="intro">
+      <button id="start-button">
+        <span>start sticking</span>
+      <span id="sound-info">🔈 note: plays sound!</span>
+    </button>
+    </div>
     <div id="marquee">
       <div id="marquee-text">MORNING MORNING MORNING MORNING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AFTERNOON AFTERNOON AFTERNOON AFTERNOON &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EVENING EVENING EVENING EVENING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIGHT NIGHT NIGHT NIGHT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MORNING MORNING MORNING MORNING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AFTERNOON AFTERNOON AFTERNOON AFTERNOON &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EVENING EVENING EVENING EVENING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIGHT NIGHT NIGHT NIGHT</div>
     </div>
-    <div id="produce-to-peel-from">
-      <div id="current-produce-name"></div>
-      <div id="current-sticker-container"><img src="" id="current-sticker-img" draggable="false"></div>
+    <div id="sticker-play-area">
+      <div id="produce-to-peel-from">
+        <div id="current-produce-name"></div>
+        <div id="current-sticker-container"><img src="" id="current-sticker-img" draggable="false"></div>
+      </div>
+      <main id="notebook"></main>
     </div>
-    <main id="notebook"></main>
-    <footer><a target="_blank" href="https://www.instagram.com/anotherbrowsertab/">anotherbrowsertab</a></footer>
+    <div id="sound-toggle" aria-label="sound" aria-pressed="true">🔈</div>
+    <footer><a target="_blank" href="https://www.instagram.com/anotherbrowsertab/">@anotherbrowsertab</a></footer>
   </body>
 </html>
