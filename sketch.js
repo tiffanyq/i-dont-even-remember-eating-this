@@ -130,6 +130,10 @@ async function setup() {
   spawnerImg.addEventListener("pointercancel", placeSticker);
 
   noLoop(); // redraw when sticker added
+
+  // allow start after loading done
+  document.getElementById("start-button").disabled = false;
+  document.getElementById("start-label").innerText = "start sticking";
 }
 
 function draw() {

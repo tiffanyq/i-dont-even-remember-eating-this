@@ -76,11 +76,16 @@ body.dragging-sticker #marquee {
 
 
 
-#start-button:hover,
+#start-button:hover:not(:disabled),
 .thought-option:hover {
   color: #282828;
   background: white;
   outline: 2px solid var(--time-colour, #ff8f4e);
+}
+
+#start-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 #thought {
