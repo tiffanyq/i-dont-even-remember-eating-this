@@ -10,14 +10,14 @@ let soundOn = true;
 let timeOfDay = 0;
 
 const TIMES_OF_DAY = [
-  "#ff8f4e", // 1. light sunrise / early morning
-  "#e6ce1c", // 2. daytime / morning
-  "#6dc0ff", // 3. noon / peak brightness
-  "#1cb9e5", // 4. afternoon, dimmer
-  "#dd91e9", // 5. evening, early sunset
-  "#a62e54", // 6. deep sunset
-  "#0f163d", // 7. night
-  "#575a96", // 8. night, prepping for morning
+  "#d06b31", // 1. light sunrise / early morning
+  "#e6a91c", // 2. daytime / morning
+  "#8ec9f7", // 3. noon / peak brightness
+  "#099bc4", // 4. afternoon, dimmer
+  "#bb5fc9", // 5. evening, early sunset
+  "#801b3b", // 6. deep sunset
+  "#000315", // 7. night
+  "#3e4182", // 8. night, prepping for morning
 ];
 const MARQUEE_WORDS = ["MORNING", "AFTERNOON", "EVENING", "NIGHT"];
 const STICKER_SCALE_FACTOR = 0.45;
