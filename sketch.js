@@ -27,6 +27,7 @@ const peelSound = new Audio("sound/peel.mp3");
 const stickSound = new Audio("sound/stick.mp3");
 const thoughtSound = new Audio("sound/thought.mp3");
 const selectionSound = new Audio("sound/selection.mp3");
+const sunMoonSound = new Audio("sound/sunmoon.mp3");
 const backgroundSound = new Audio("sound/background_sound.mp3");
 backgroundSound.loop = true;
 
@@ -39,11 +40,13 @@ function boost(audio, amount) {
   source.connect(gain).connect(audioCtx.destination);
 }
 
-boost(peelSound, 2);
-boost(stickSound, 5);
-boost(thoughtSound, 1.5);
-boost(selectionSound, 1.5);
-boost(backgroundSound, 0.3);
+// keeping here in case of future adjustments
+boost(peelSound, 1);
+boost(stickSound, 1);
+boost(thoughtSound, 1);
+boost(selectionSound, 1);
+boost(sunMoonSound, 1);
+boost(backgroundSound, 0.2);
 
 async function setup() {
   showTimeOfDay();
@@ -67,6 +70,12 @@ async function setup() {
       backgroundSound.pause();
     }
   });
+
+  // clicking the sun / moon plays a sound
+  document.getElementById("celestial").addEventListener("click", () => {
+    playSound(sunMoonSound);
+  });
+
   // dimiss modal upon option select
   for (const option of document.querySelectorAll(".thought-option")) {
     option.addEventListener("click", () => {
@@ -84,9 +93,19 @@ async function setup() {
     s.imageFile = await loadImage("stickers/" + s.image);
   }
 
+  // init sticker with title
+  spawnerImg = document.getElementById("current-sticker-img");
+  spawnSticker();
+
+  const playArea = document.getElementById("sticker-play-area");
+  playArea.style.marginBlock = "0";
+  const spaceAbove = document.getElementById("notebook").getBoundingClientRect().top;
+  playArea.style.marginBlock = "";
+  const spaceBelow = 16; // the body's bottom padding
+
   // set up canvas aspect ratio
   const aspectRatio = notebookImg.height / notebookImg.width;
-  const w = constrain(min(windowWidth - 32, (windowHeight - 260) / aspectRatio), 700, 1200);
+  const w = constrain(min(windowWidth - 32, (windowHeight - spaceAbove - spaceBelow) / aspectRatio), 740, 1200);
   cnv = createCanvas(w, w * aspectRatio);
   cnv.parent("notebook");
 
@@ -103,9 +122,6 @@ async function setup() {
     cnv.elt.style.cursor = stickerAt(e.clientX, e.clientY) ? "pointer" : "";
   });
 
-  // init sticker
-  spawnerImg = document.getElementById("current-sticker-img");
-  spawnSticker();
 
   // init sticker dragging
     spawnerImg.addEventListener("pointerdown", (e) => {
@@ -219,6 +235,15 @@ function showTimeOfDay() {
   document.getElementById("time-tint").style.backgroundColor = TIMES_OF_DAY[timeOfDay];
   document.getElementById("marquee").style.backgroundColor = TIMES_OF_DAY[timeOfDay];
   document.documentElement.style.setProperty("--time-colour", TIMES_OF_DAY[timeOfDay]);
+  showCelestial();
+}
+
+// times 1-4: sun (top half), 5-8: moon (bottom half)
+// positions set in style.css
+function showCelestial() {
+  const celestial = document.getElementById("celestial");
+  celestial.className = "spot-" + timeOfDay;
+  celestial.textContent = timeOfDay < 4 ? "🌞" : "🌚";
 }
 
 // move to the next time of day, loop back to sunrise at the end
@@ -227,22 +252,50 @@ function advanceTimeOfDay() {
   showTimeOfDay();
 }
 
+// words that go before each time of day, depending on how many stickers are placed
+function marqueePrefix(count) {
+  if (count === 0) return "";
+  if (count === 1) return "ANOTHER ";
+  if (count === 2) return "YET ANOTHER ";
+  return "AND YET ANOTHER ";
+}
+
+// periods that go after each time of day:
+// none for the first 3 stickers, "." at 4, "..." at 5, then 3 more per sticker
+function marqueePeriods(count) {
+  if (count < 4) return "";
+  if (count === 4) return ".";
+  return "...".repeat(count - 4);
+}
+
 function updateMarquee() {
-  const periods = ".".repeat(placedStickers.length);
-  const groups = MARQUEE_WORDS.map((word) => {
-    return Array(4).fill(word + periods).join(" ");
-  });
+  const count = placedStickers.length;
+  const prefix = marqueePrefix(count);
+  const periods = marqueePeriods(count);
   // gap between groups
   const gap = "\u00A0".repeat(10);
-  const marqueeText = groups.join(gap) + gap;
+  const sequence = MARQUEE_WORDS.map((word) => prefix + word + periods).join(gap) + gap;
 
-  for (const marqueeCopy of document.querySelectorAll(".marquee-copy")) {
+  // each copy has to be at least as wide as the screen, or the loop shows a gap.
+  // measure one sequence, then repeat it enough times to fill the screen
+  const copies = document.querySelectorAll(".marquee-copy");
+  copies[0].textContent = sequence;
+  const repeats = Math.ceil(window.innerWidth / copies[0].offsetWidth);
+  const marqueeText = sequence.repeat(repeats);
+
+  for (const marqueeCopy of copies) {
     marqueeCopy.textContent = marqueeText;
   }
+  const pixelsPerSecond = 30;
+  document.getElementById("marquee-text").style.animationDuration =
+    copies[0].offsetWidth / pixelsPerSecond + "s";
 }
 
 function showThought(thought) {
   document.getElementById("thought-text").innerText = thought.thought;
+  // how many stickers on the notebook have this same thought
+  const count = placedStickers.filter((p) => p.thought === thought).length;
+  document.getElementById("thought-count-number").innerText = count;
 
   const option1 = document.getElementById("thought-option-1");
   const option2 = document.getElementById("thought-option-2");

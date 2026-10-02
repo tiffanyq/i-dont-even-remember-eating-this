@@ -18,6 +18,7 @@
   </head>
   <body>
     <div id="time-tint"></div>
+    <div id="celestial" aria-hidden="true"></div>
     <div id="intro">
       <button id="start-button" disabled>
         <span id="start-label">Loading...</span>
@@ -34,7 +35,13 @@
       </div>
       <main id="notebook"></main>
       <div id="thought" class="hidden">
-        <div id="thought-text"></div>
+        <div id="thought-box">
+          <div id="thought-header-container">
+            <div id="thought-count">Thought count: <span id="thought-count-number"></span></div>
+            <div id="thought-date">Date: ???</div>
+          </div>
+          <div id="thought-text"></div>
+        </div>
         <div id="thought-options">
           <button id="thought-option-1" class="thought-option"></button>
           <button id="thought-option-2" class="thought-option"></button>
@@ -42,6 +49,6 @@
       </div>
     </div>
     <div id="sound-toggle" aria-label="sound" aria-pressed="true">🔈</div>
-    <footer><a target="_blank" href="https://www.instagram.com/anotherbrowsertab/">@anotherbrowsertab</a></footer>
+    <footer><a target="_blank" href="https://www.instagram.com/anotherbrowsertab/">@anotherbrowsertab</a>'s produce, 2023 - ?</footer>
   </body>
 </html>
